@@ -703,7 +703,7 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   </table>
   <p data-page-node-id="wLqAnFcEtPkSepdAY0jkG9">📌 <strong data-page-node-id="QlxS2zampiLNcDyKcTUZ6l">严控原则</strong>：首批 5 色 × 1 款式 = 5 个链接 / 店 · <strong data-page-node-id="iK6krW4iQcFzznMBSt18Lw">不要全开 30+ 色</strong>，等数据验证后再扩品。</p>
 <h3 style="margin-top:18px">🖼 选品缩略图卡（款式一览）</h3>
-<p style="font-size:12px;color:var(--muted);margin-bottom:8px">说明：缩略图加载真实产品图（路径见下）。图片加载失败时自动回落到 SVG 占位包形（品牌审核友好）。每张卡片下方直接展开款式参数、卖点、合规提示，一目了然。</p>
+<p style="font-size:12px;color:var(--muted);margin-bottom:8px">说明：已加载 4 张实拍图（短柄中号/小号/双肩包/1500 牛皮款），1 张保留 SVG 占位（1500 mini · 原图待出货）。每张卡片下方直接展开款式参数、卖点、合规提示。</p>
 <div class="sku-grid">
 
   <!-- 卡片 1：短手柄中号 P0 -->
@@ -812,10 +812,11 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   </div>
 </div>
 
-<!-- 上传提示 -->
+<!-- 上传状态提示 -->
 <div class="sku-upload-hint">
-  📌 <strong>真实图替换指引</strong>：把 5 张产品图（建议 1:1 正方形 · 600×600px 以上 · 纯色背景最佳）放到 <code>longchamp/assets/products/</code> 目录下，文件名依次为：
-  <code>short-mid.jpg</code> · <code>short-small.jpg</code> · <code>mini-1500.jpg</code> · <code>backpack.jpg</code> · <code>leather-1500.jpg</code>。上传后页面无需刷新 HTML，缩略图自动替换占位 SVG。
+  ✅ <strong>实拍图已上传 4/5</strong>（short-mid / short-small / backpack / leather-1500 · 800×800px · 平均 130KB/张）
+  · ⚠️ <strong>1500 mini</strong> 在 81 张原图中暂无对应图，保留 SVG 占位（等出货后再补图）
+  <br>📌 <strong>补图方法</strong>：把对应图重命名为 <code>mini-1500.jpg</code>，放进 <code>longchamp/assets/products/</code> 目录，重新触发 GitHub Actions 即可。无需改 HTML。
 </div>
 
 </div>
