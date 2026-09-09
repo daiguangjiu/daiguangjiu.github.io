@@ -116,8 +116,143 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   table{font-size:12px}
   th,td{padding:5px 7px}
 }
+
+<style>
+/* ===== 选品卡片 ===== */
+.sku-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+.sku-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sku-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-color: #f97316;
+}
+.sku-thumb {
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.sku-meta {
+  padding: 10px 12px 12px;
+  border-top: 1px solid #f3f4f6;
+}
+.sku-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.sku-tag {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+.tag-p0 { background: #15803d; color: #fff; }
+.tag-p1 { background: #0891b2; color: #fff; }
+.tag-p2 { background: #7c3aed; color: #fff; }
+.tag-p4 { background: #d97706; color: #fff; }
+.sku-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ea580c;
+  margin: 4px 0;
+}
+.sku-colors {
+  display: flex;
+  gap: 5px;
+  margin-top: 6px;
+}
+.sku-colors span {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  cursor: help;
+}
+
+/* ===== 弹窗 Modal ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 540px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 26px 28px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #6b7280;
+  line-height: 1;
+}
+.modal-close:hover { color: #111827; }
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+.modal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #f9fafb;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.modal-row span { color: #6b7280; }
+.modal-color-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #f3f4f6;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #374151;
+}
+.modal-kw-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #fef3c7;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #92400e;
+}
 </style>
 </head>
+
 <body data-page-node-id="SSAo7Fl73KUpardXU32iGF">
 
 <header data-page-node-id="x6XBljNetBP1p37H9XMfD1">
@@ -278,7 +413,7 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   <h3 data-page-node-id="TuzVEUSvXGfGw1C6YqGSkn">🔍 闲鱼箱包搜索关键词热度</h3>
   <table data-page-node-id="nCTfLkx9VFdbNrU6ZvX44I">
     <tr data-page-node-id="SbapRyCYti10CocL0uw6Ck"><th data-page-node-id="dJSX2jAInDKM5FZgeB0qN8">排名</th><th data-page-node-id="5C0TBfo8NyHpx0rDZ1RVhE">关键词</th><th data-page-node-id="9u2pk9ktwyDn080hR0RD0o">日均搜索</th><th data-page-node-id="Jrix8O5goZyRu6WacsuPjl">核心意图</th><th data-page-node-id="J4Nv1iDofZMGt6DkOXRBhF">相关性</th></tr>
-    <tr data-page-node-id="SKavb7AZKpnmgcfxBjLyY2"><td data-page-node-id="e6GD1tUAH6wK3xCqHu7Rtx">1</td><td data-page-node-id="aFezWSxP1Vrg59oiSjbJ9U">双肩包</td><td data-page-node-id="xhWYtjmNbat15T9qTEavmO">50万+</td><td data-page-node-id="MZft3ADD1Ma7JOUYNvfZwj">通用 · 学生/通勤</td><td data-page-node-id="Q0SghfLI2l2fitwzNUdTFE">⭐⭐⭐⭐ 4星</td></tr>
+    <tr data-page-node-id="SKavb7AZKpnmgcfxBjLyY2"><td data-page-node-id="e6GD1tUAH6wK3xCqHu7Rtx">1</td><td data-page-node-id="aFezWSxP1Vrg59oiSjbJ9U">双肩包</td><td data-page-node-id="xhWYtjmNbat15T9qTEavmO">50万+</td><td data-page-node-id="MZft3ADD1Ma7JOUYNvfZwj">通用 · 学生/通勤</td><td data-page-node-id="Q0SghfLI2l2fitwzNUdTFE">⭐⭐⭐⭐ 强相关</td></tr>
     <tr data-page-node-id="QEzdwloasaWkQySdKCZko1"><td data-page-node-id="xDBKuU84GW6N3Nd20bd6jc">2</td><td data-page-node-id="FYI8MBhWKlRrvmVwO9yRFz">coach</td><td data-page-node-id="bd2jTzICRImoCBtPyWwaXO">35万+</td><td data-page-node-id="9qjcoLcKOB6PjqlNwCxknU">品牌 · 平替</td><td data-page-node-id="pmRscRl5qHFXx8hAVtYZEY">⭐⭐ 参考</td></tr>
     <tr data-page-node-id="enJYN3ghEEFOREe3hW9Otr"><td data-page-node-id="5yewVP9GBhTydMWHEqWMA8">3</td><td data-page-node-id="GRJ2b2S1vadFeVIliTKZAQ">mk</td><td data-page-node-id="uyV2Si2n1tL7GEQJmQl5la">30万+</td><td data-page-node-id="wW1QRrYimgYGo7IBPJubng">品牌 · 平替</td><td data-page-node-id="lu2qr1dB6tjKUTJKtnWeFR">⭐⭐ 参考</td></tr>
     <tr style="background:#dcfce7" data-page-node-id="OmrAteQ9almOBWJ9meYFhV"><td data-page-node-id="BjrpOcEgVm4UVaxTQ7E5eq">4</td><td data-page-node-id="syAudxE65QObZVFiXmTzGB">饺子包</td><td data-page-node-id="UQBYOe2RYFwSOHq47uTku9">25万+</td><td data-page-node-id="4LoJcgKqNQ0rAy4869oRZF">款式 · 通勤</td><td data-page-node-id="rXUAUiYsmaOKfX5muBfXBB">⭐⭐⭐⭐⭐ 强相关</td></tr>
@@ -559,6 +694,220 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
     <tr data-page-node-id="p4zX80mOVysIJRJsPSx2uX"><td data-page-node-id="zSR6jEQEvuIDRsqdNZ1qeb"><strong data-page-node-id="Bn4R39K8n6jotRsGTa5Bn6">P4 高客单</strong></td><td data-page-node-id="DG49oLrpFkjQoDxk6AvB14">1500 牛皮款</td><td data-page-node-id="ShtbrLmoAVjofW5EHeb58p">5 色</td><td data-page-node-id="QSR2eUGy5kfQ8RHms27RpN">¥299</td><td data-page-node-id="XPqotQzPnT3sCeesqVe9TC">5%</td><td data-page-node-id="4NKUzgWXbUxjEwHI8CHpjG">5%</td></tr>
   </table>
   <p data-page-node-id="wLqAnFcEtPkSepdAY0jkG9">📌 <strong data-page-node-id="QlxS2zampiLNcDyKcTUZ6l">严控原则</strong>：首批 5 色 × 1 款式 = 5 个链接 / 店 · <strong data-page-node-id="iK6krW4iQcFzznMBSt18Lw">不要全开 30+ 色</strong>，等数据验证后再扩品。</p>
+<h3 style="margin-top:18px">🖼 选品缩略图卡（点击查看款式详情弹窗）</h3>
+<p style="font-size:13px;color:var(--muted)">说明：缩略图采用 SVG + 色值渲染（替代真实产品图，避免品牌审核风险）。点击任一卡片可查看完整款式参数、卖点、合规提示。</p>
+<div class="sku-grid">
+  <!-- 卡片 1：短手柄中号 P0 -->
+  <div class="sku-card" onclick="openModal('sku-short-mid')">
+    <div class="sku-thumb" style="background:linear-gradient(135deg,#f4ecd8 0%,#e8d9b8 100%)">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:88%;height:88%">
+        <path d="M20 38 L80 38 Q82 38 82 40 L82 78 Q82 82 78 82 L22 82 Q18 82 18 78 L18 40 Q18 38 20 38 Z" fill="#1a1a1a" opacity="0.85"/>
+        <path d="M30 38 Q30 26 50 26 Q70 26 70 38" fill="none" stroke="#1a1a1a" stroke-width="2.5" opacity="0.85"/>
+        <line x1="20" y1="50" x2="80" y2="50" stroke="#fff" stroke-width="0.8" opacity="0.4"/>
+        <text x="50" y="62" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" opacity="0.5">短柄中号</text>
+      </svg>
+    </div>
+    <div class="sku-meta">
+      <div class="sku-name">短手柄中号 <span class="sku-tag tag-p0">P0 主力</span></div>
+      <div class="sku-price">¥199</div>
+      <div class="sku-colors"><span style="background:#0a0a0a" title="黑色"></span><span style="background:#1e3a5f" title="藏蓝"></span><span style="background:#7b9cb8" title="雾霾蓝"></span><span style="background:#f5f1e8" title="奶白"></span><span style="background:#a0522d" title="焦糖"></span></div>
+    </div>
+  </div>
+
+  <!-- 卡片 2：短手柄小号 P1 -->
+  <div class="sku-card" onclick="openModal('sku-short-small')">
+    <div class="sku-thumb" style="background:linear-gradient(135deg,#dbe6f0 0%,#a8c0d4 100%)">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:82%;height:82%">
+        <path d="M28 42 L72 42 Q74 42 74 44 L74 76 Q74 80 70 80 L30 80 Q26 80 26 76 L26 44 Q26 42 28 42 Z" fill="#1e3a5f" opacity="0.85"/>
+        <path d="M36 42 Q36 32 50 32 Q64 32 64 42" fill="none" stroke="#1e3a5f" stroke-width="2" opacity="0.85"/>
+        <text x="50" y="62" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" opacity="0.5">短柄小号</text>
+      </svg>
+    </div>
+    <div class="sku-meta">
+      <div class="sku-name">短手柄小号 <span class="sku-tag tag-p1">P1 次主力</span></div>
+      <div class="sku-price">¥169</div>
+      <div class="sku-colors"><span style="background:#0a0a0a" title="黑色"></span><span style="background:#1e3a5f" title="藏蓝"></span><span style="background:#7b9cb8" title="雾霾蓝"></span><span style="background:#f5f1e8" title="奶白"></span><span style="background:#a0522d" title="焦糖"></span></div>
+    </div>
+  </div>
+
+  <!-- 卡片 3：1500 mini P2 -->
+  <div class="sku-card" onclick="openModal('sku-1500-mini')">
+    <div class="sku-thumb" style="background:linear-gradient(135deg,#f8f4ec 0%,#ede2cc 100%)">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:78%;height:78%">
+        <path d="M34 48 L66 48 Q68 48 68 50 L68 74 Q68 78 64 78 L36 78 Q32 78 32 74 L32 50 Q32 48 34 48 Z" fill="#f5f1e8" stroke="#a0522d" stroke-width="1.2"/>
+        <path d="M40 48 Q40 38 50 38 Q60 38 60 48" fill="none" stroke="#a0522d" stroke-width="1.5"/>
+        <circle cx="50" cy="62" r="2" fill="#a0522d" opacity="0.7"/>
+        <text x="50" y="70" font-size="6" fill="#a0522d" text-anchor="middle" font-family="sans-serif" opacity="0.7">1500 mini</text>
+      </svg>
+    </div>
+    <div class="sku-meta">
+      <div class="sku-name">1500 mini <span class="sku-tag tag-p2">P2 差异化</span></div>
+      <div class="sku-price">¥219</div>
+      <div class="sku-colors"><span style="background:#0a0a0a" title="黑色"></span><span style="background:#1e3a5f" title="藏蓝"></span><span style="background:#7b9cb8" title="雾霾蓝"></span><span style="background:#f5f1e8" title="奶白"></span><span style="background:#a0522d" title="焦糖"></span></div>
+    </div>
+  </div>
+
+  <!-- 卡片 4：双肩包 P2 -->
+  <div class="sku-card" onclick="openModal('sku-backpack')">
+    <div class="sku-thumb" style="background:linear-gradient(135deg,#e8e4dc 0%,#c4b8a4 100%)">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:84%;height:84%">
+        <path d="M30 36 Q30 28 38 28 L62 28 Q70 28 70 36 L70 42 L30 42 Z" fill="#0a0a0a" opacity="0.6"/>
+        <path d="M28 42 L72 42 Q74 42 74 44 L74 82 Q74 86 70 86 L30 86 Q26 86 26 82 L26 44 Q26 42 28 42 Z" fill="#0a0a0a" opacity="0.85"/>
+        <path d="M38 36 Q38 22 50 22 Q62 22 62 36" fill="none" stroke="#0a0a0a" stroke-width="2" opacity="0.85"/>
+        <line x1="50" y1="44" x2="50" y2="84" stroke="#fff" stroke-width="0.6" opacity="0.3"/>
+        <text x="50" y="68" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" opacity="0.5">双肩包</text>
+      </svg>
+    </div>
+    <div class="sku-meta">
+      <div class="sku-name">双肩包 <span class="sku-tag tag-p2">P2 强相关</span></div>
+      <div class="sku-price">¥239</div>
+      <div class="sku-colors"><span style="background:#0a0a0a" title="黑色"></span><span style="background:#1e3a5f" title="藏蓝"></span><span style="background:#7b9cb8" title="雾霾蓝"></span><span style="background:#f5f1e8" title="奶白"></span><span style="background:#a0522d" title="焦糖"></span></div>
+    </div>
+  </div>
+
+  <!-- 卡片 5：1500 牛皮款 P4 -->
+  <div class="sku-card" onclick="openModal('sku-leather')">
+    <div class="sku-thumb" style="background:linear-gradient(135deg,#3a2418 0%,#5d3a26 100%)">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:86%;height:86%">
+        <path d="M22 40 L78 40 Q80 40 80 42 L80 78 Q80 82 76 82 L24 82 Q20 82 20 78 L20 42 Q20 40 22 40 Z" fill="#8b6f47" opacity="0.92"/>
+        <path d="M32 40 Q32 26 50 26 Q68 26 68 40" fill="none" stroke="#8b6f47" stroke-width="2.5" opacity="0.92"/>
+        <ellipse cx="50" cy="62" rx="6" ry="3" fill="#5d3a26" opacity="0.6"/>
+        <text x="50" y="72" font-size="6" fill="#fff" text-anchor="middle" font-family="sans-serif" opacity="0.6">1500 牛皮</text>
+      </svg>
+    </div>
+    <div class="sku-meta">
+      <div class="sku-name">1500 牛皮款 <span class="sku-tag tag-p4">P4 高客单</span></div>
+      <div class="sku-price">¥299</div>
+      <div class="sku-colors"><span style="background:#0a0a0a" title="黑色"></span><span style="background:#5d3a26" title="巧克力"></span><span style="background:#8b6f47" title="驼色"></span><span style="background:#3a2418" title="深棕"></span><span style="background:#f5f1e8" title="奶白"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 弹窗 Modal 容器 -->
+<div id="sku-modal" class="modal" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="closeModal(event)">×</span>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// 弹窗数据
+const SKU_DATA = {
+  'sku-short-mid': {
+    name: '短手柄中号',
+    level: 'P0 主力 · 资源 60%',
+    price: '¥199',
+    cost: '¥100',
+    gross: '¥99 (49.7%)',
+    size: '35 × 25 × 18 cm',
+    weight: '约 280g',
+    capacity: 'A4 + iPad 12.9 + 500ml 水瓶 + 折叠伞',
+    colors: ['黑 #0a0a0a', '藏蓝 #1e3a5f', '雾霾蓝 #7b9cb8', '奶白 #f5f1e8', '焦糖 #a0522d'],
+    scene: '通勤 · 出行 · 日常',
+    selling: '通勤神器 / 折叠收纳 / 大容量 / 9 色可选',
+    compliance: 'logo 角度避开（正面朝左 30°），主图不要显示品牌字、骑师标、五金印刻',
+    keywords: ['尼龙折叠包', '饺子包', '通勤包', '短手柄包']
+  },
+  'sku-short-small': {
+    name: '短手柄小号',
+    level: 'P1 次主力 · 资源 15%',
+    price: '¥169',
+    cost: '¥90',
+    gross: '¥79 (46.7%)',
+    size: '23 × 22 × 14 cm',
+    weight: '约 220g',
+    capacity: 'iPad mini + 钱包 + 水瓶 + 化妆包',
+    colors: ['黑 #0a0a0a', '藏蓝 #1e3a5f', '雾霾蓝 #7b9cb8', '奶白 #f5f1e8', '焦糖 #a0522d'],
+    scene: '学生 · 逛街 · 短途',
+    selling: '轻便小巧 / 不挑身高 / 适合日常',
+    compliance: '同 P0 路径，正面朝左 35°',
+    keywords: ['短手柄小号', '迷你包', '学生包']
+  },
+  'sku-1500-mini': {
+    name: '1500 mini',
+    level: 'P2 差异化 · 资源 10%',
+    price: '¥219',
+    cost: '¥110',
+    gross: '¥109 (49.8%)',
+    size: '21 × 14 × 9 cm',
+    weight: '约 180g',
+    capacity: '手机 + 钱包 + 口红 + 钥匙',
+    colors: ['黑 #0a0a0a', '藏蓝 #1e3a5f', '雾霾蓝 #7b9cb8', '奶白 #f5f1e8', '焦糖 #a0522d'],
+    scene: '约会 · 晚宴 · 拍照',
+    selling: '精致小巧 / 高颜值 / 拍照神器',
+    compliance: '同 P0 路径，重点避开口红印字角度',
+    keywords: ['迷你包', '1500', '饺子包mini']
+  },
+  'sku-backpack': {
+    name: '双肩包（Le Pliage 复刻款）',
+    level: 'P2 强相关 · 资源 15%',
+    price: '¥239',
+    cost: '¥150',
+    gross: '¥89 (37.2%)',
+    size: '30 × 28 × 12 cm',
+    weight: '约 360g',
+    capacity: '13寸笔记本 + 书本 + 水瓶 + 雨伞',
+    colors: ['黑 #0a0a0a', '藏蓝 #1e3a5f', '雾霾蓝 #7b9cb8', '奶白 #f5f1e8', '焦糖 #a0522d'],
+    scene: '通勤 · 学生 · 旅行',
+    selling: '解放双手 / 大容量 / 通勤神器 / 笔记本友好',
+    compliance: '⚠️ 双肩包 logo 区域较大，重点避面（正面朝下 60° 或拍侧面），五金件虚化处理',
+    keywords: ['双肩包通勤', '尼龙双肩包', '折叠双肩包', '学生双肩包']
+  },
+  'sku-leather': {
+    name: '1500 牛皮款',
+    level: 'P4 高客单 · 资源 5%',
+    price: '¥299',
+    cost: '¥160',
+    gross: '¥139 (46.5%)',
+    size: '35 × 25 × 18 cm',
+    weight: '约 380g',
+    capacity: 'A4 + iPad + 钱包 + 水瓶',
+    colors: ['黑 #0a0a0a', '巧克力 #5d3a26', '驼色 #8b6f47', '深棕 #3a2418', '奶白 #f5f1e8'],
+    scene: '商务 · 通勤 · 送礼',
+    selling: '全皮质感 / 高档感 / 保值',
+    compliance: '⚠️ 牛皮款 logo 较难避开，建议拍侧面 + 后期虚化',
+    keywords: ['牛皮折叠包', '商务通勤包', '真皮饺子包']
+  }
+};
+
+function openModal(skuId) {
+  const data = SKU_DATA[skuId];
+  if (!data) return;
+  const colorsHtml = data.colors.map(c => `<span class="modal-color-chip">${c}</span>`).join('');
+  const keywordsHtml = data.keywords.map(k => `<span class="modal-kw-chip">${k}</span>`).join('');
+  document.getElementById('modal-body').innerHTML = `
+    <h2 style="margin-top:0">${data.name}</h2>
+    <div style="display:inline-block;padding:3px 10px;background:#dcfce7;border-radius:4px;font-size:12px;color:#15803d;margin-bottom:10px">${data.level}</div>
+    <div class="modal-grid">
+      <div class="modal-row"><span>售价</span><strong>${data.price}</strong></div>
+      <div class="modal-row"><span>成本</span><strong>${data.cost}</strong></div>
+      <div class="modal-row"><span>毛利</span><strong style="color:#15803d">${data.gross}</strong></div>
+      <div class="modal-row"><span>尺寸</span><strong>${data.size}</strong></div>
+      <div class="modal-row"><span>自重</span><strong>${data.weight}</strong></div>
+      <div class="modal-row"><span>容量</span><strong>${data.capacity}</strong></div>
+      <div class="modal-row"><span>适用场景</span><strong>${data.scene}</strong></div>
+    </div>
+    <div style="margin-top:14px"><strong>颜色</strong>：<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">${colorsHtml}</div></div>
+    <div style="margin-top:14px"><strong>核心卖点</strong>：${data.selling}</div>
+    <div style="margin-top:14px"><strong>合规要点</strong>：${data.compliance}</div>
+    <div style="margin-top:14px"><strong>投放关键词</strong>：<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">${keywordsHtml}</div></div>
+    <div style="margin-top:14px;font-size:12px;color:var(--muted)">💡 弹窗内容由缩略图卡触发展示，未上传原图前用 SVG 占位；后续上传真实产品图后，可直接替换缩略图为真实图。</div>
+  `;
+  document.getElementById('sku-modal').style.display = 'flex';
+}
+
+function closeModal(e) {
+  if (e.target.id === 'sku-modal' || e.target.classList.contains('modal-close')) {
+    document.getElementById('sku-modal').style.display = 'none';
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.getElementById('sku-modal').style.display = 'none';
+});
+</script>
+
 </div>
 
 <h2 data-page-node-id="oH5hFMX6MwQU7JpZz2mCIi">5.5 利润测算</h2>
