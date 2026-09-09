@@ -121,25 +121,30 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
 /* ===== 选品卡片（紧凑缩略图 + 直接展开规格，去掉弹窗） ===== */
 .sku-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, 160px);
   gap: 10px;
   margin-top: 10px;
+  justify-content: start;
 }
 .sku-card {
+  width: 160px;
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   overflow: hidden;
 }
 .sku-thumb {
-  aspect-ratio: 4/3;
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1/1;
+  margin: 5px auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 6px;
   position: relative;
 }
-.sku-thumb svg { width: 56%; height: 56%; }
+.sku-thumb svg { width: 58%; height: 58%; }
 .sku-level {
   position: absolute;
   top: 4px;
