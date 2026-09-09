@@ -122,8 +122,8 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
 .sku-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 160px);
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 12px;
   justify-content: start;
 }
 .sku-card {
@@ -144,7 +144,52 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   padding: 6px;
   position: relative;
 }
-.sku-thumb svg { width: 58%; height: 58%; }
+.sku-thumb .sku-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+}
+.sku-thumb .sku-svg {
+  width: 58%;
+  height: 58%;
+}
+.sku-upload-hint {
+  font-size: 11px;
+  color: #ea580c;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #fff7ed;
+  border-left: 3px solid #ea580c;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+.sku-upload-hint code {
+  background: #fed7aa;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 10.5px;
+  color: #9a3412;
+}
+
+/* 响应式：中等屏 */
+@media (max-width: 768px) {
+  .sku-grid { gap: 10px; }
+  .sku-card { width: 150px; }
+  .sku-thumb { width: 140px; height: 140px; }
+  .sku-meta { padding: 6px 8px 8px; }
+}
+/* 响应式：小屏（手机竖屏） */
+@media (max-width: 480px) {
+  .sku-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .sku-card { width: 100%; max-width: 170px; }
+  .sku-thumb { width: 100%; max-width: 150px; height: 150px; }
+  .sku-name { font-size: 11.5px; }
+  .sku-price { font-size: 13px; }
+  .sku-specs { font-size: 10px; }
+}
 .sku-level {
   position: absolute;
   top: 4px;
@@ -658,14 +703,16 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   </table>
   <p data-page-node-id="wLqAnFcEtPkSepdAY0jkG9">📌 <strong data-page-node-id="QlxS2zampiLNcDyKcTUZ6l">严控原则</strong>：首批 5 色 × 1 款式 = 5 个链接 / 店 · <strong data-page-node-id="iK6krW4iQcFzznMBSt18Lw">不要全开 30+ 色</strong>，等数据验证后再扩品。</p>
 <h3 style="margin-top:18px">🖼 选品缩略图卡（款式一览）</h3>
-<p style="font-size:12px;color:var(--muted);margin-bottom:8px">说明：缩略图用极简 SVG 占位（替代真实产品图，避免品牌审核风险）。每张卡片下方直接展开款式参数、卖点、合规提示，一目了然。</p>
+<p style="font-size:12px;color:var(--muted);margin-bottom:8px">说明：缩略图加载真实产品图（路径见下）。图片加载失败时自动回落到 SVG 占位包形（品牌审核友好）。每张卡片下方直接展开款式参数、卖点、合规提示，一目了然。</p>
 <div class="sku-grid">
 
   <!-- 卡片 1：短手柄中号 P0 -->
   <div class="sku-card">
     <div class="sku-thumb" style="background:linear-gradient(135deg,#f4ecd8 0%,#e8d9b8 100%)">
       <span class="sku-level">P0</span>
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 40 L80 40 Q82 40 82 42 L82 78 Q82 82 78 82 L22 82 Q18 82 18 78 L18 42 Q18 40 20 40 Z" fill="#1a1a1a" opacity="0.85"/><path d="M30 40 Q30 28 50 28 Q70 28 70 40" fill="none" stroke="#1a1a1a" stroke-width="2.5" opacity="0.85"/></svg>
+      <img src="./assets/products/short-mid.jpg" alt="短手柄中号" loading="lazy" class="sku-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <svg class="sku-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M20 40 L80 40 Q82 40 82 42 L82 78 Q82 82 78 82 L22 82 Q18 82 18 78 L18 42 Q18 40 20 40 Z" fill="#1a1a1a" opacity="0.85"/><path d="M30 40 Q30 28 50 28 Q70 28 70 40" fill="none" stroke="#1a1a1a" stroke-width="2.5" opacity="0.85"/></svg>
     </div>
     <div class="sku-meta">
       <div class="sku-name">短手柄中号 <span class="sku-tag tag-p0">P0 主力</span></div>
@@ -684,7 +731,9 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   <div class="sku-card">
     <div class="sku-thumb" style="background:linear-gradient(135deg,#dbe6f0 0%,#a8c0d4 100%)">
       <span class="sku-level">P1</span>
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M28 44 L72 44 Q74 44 74 46 L74 76 Q74 80 70 80 L30 80 Q26 80 26 76 L26 46 Q26 44 28 44 Z" fill="#1e3a5f" opacity="0.85"/><path d="M36 44 Q36 34 50 34 Q64 34 64 44" fill="none" stroke="#1e3a5f" stroke-width="2" opacity="0.85"/></svg>
+      <img src="./assets/products/short-small.jpg" alt="短手柄小号" loading="lazy" class="sku-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <svg class="sku-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M28 44 L72 44 Q74 44 74 46 L74 76 Q74 80 70 80 L30 80 Q26 80 26 76 L26 46 Q26 44 28 44 Z" fill="#1e3a5f" opacity="0.85"/><path d="M36 44 Q36 34 50 34 Q64 34 64 44" fill="none" stroke="#1e3a5f" stroke-width="2" opacity="0.85"/></svg>
     </div>
     <div class="sku-meta">
       <div class="sku-name">短手柄小号 <span class="sku-tag tag-p1">P1 次主力</span></div>
@@ -703,7 +752,9 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   <div class="sku-card">
     <div class="sku-thumb" style="background:linear-gradient(135deg,#f8f4ec 0%,#ede2cc 100%)">
       <span class="sku-level">P2</span>
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M34 48 L66 48 Q68 48 68 50 L68 74 Q68 78 64 78 L36 78 Q32 78 32 74 L32 50 Q32 48 34 48 Z" fill="#f5f1e8" stroke="#a0522d" stroke-width="1.2"/><path d="M40 48 Q40 38 50 38 Q60 38 60 48" fill="none" stroke="#a0522d" stroke-width="1.5"/></svg>
+      <img src="./assets/products/mini-1500.jpg" alt="1500 mini" loading="lazy" class="sku-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <svg class="sku-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M34 48 L66 48 Q68 48 68 50 L68 74 Q68 78 64 78 L36 78 Q32 78 32 74 L32 50 Q32 48 34 48 Z" fill="#f5f1e8" stroke="#a0522d" stroke-width="1.2"/><path d="M40 48 Q40 38 50 38 Q60 38 60 48" fill="none" stroke="#a0522d" stroke-width="1.5"/></svg>
     </div>
     <div class="sku-meta">
       <div class="sku-name">1500 mini <span class="sku-tag tag-p2">P2 差异化</span></div>
@@ -722,7 +773,9 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   <div class="sku-card">
     <div class="sku-thumb" style="background:linear-gradient(135deg,#e8e4dc 0%,#c4b8a4 100%)">
       <span class="sku-level">P2</span>
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M28 44 L72 44 Q74 44 74 46 L74 82 Q74 86 70 86 L30 86 Q26 86 26 82 L26 46 Q26 44 28 44 Z" fill="#0a0a0a" opacity="0.85"/><path d="M38 38 Q38 24 50 24 Q62 24 62 38" fill="none" stroke="#0a0a0a" stroke-width="2" opacity="0.85"/></svg>
+      <img src="./assets/products/backpack.jpg" alt="双肩包" loading="lazy" class="sku-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <svg class="sku-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M28 44 L72 44 Q74 44 74 46 L74 82 Q74 86 70 86 L30 86 Q26 86 26 82 L26 46 Q26 44 28 44 Z" fill="#0a0a0a" opacity="0.85"/><path d="M38 38 Q38 24 50 24 Q62 24 62 38" fill="none" stroke="#0a0a0a" stroke-width="2" opacity="0.85"/></svg>
     </div>
     <div class="sku-meta">
       <div class="sku-name">双肩包 <span class="sku-tag tag-p2">P2 强相关</span></div>
@@ -741,7 +794,9 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
   <div class="sku-card">
     <div class="sku-thumb" style="background:linear-gradient(135deg,#3a2418 0%,#5d3a26 100%)">
       <span class="sku-level">P4</span>
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M22 42 L78 42 Q80 42 80 44 L80 78 Q80 82 76 82 L24 82 Q20 82 20 78 L20 44 Q20 42 22 42 Z" fill="#8b6f47" opacity="0.92"/><path d="M32 42 Q32 28 50 28 Q68 28 68 42" fill="none" stroke="#8b6f47" stroke-width="2.5" opacity="0.92"/></svg>
+      <img src="./assets/products/leather-1500.jpg" alt="1500 牛皮款" loading="lazy" class="sku-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <svg class="sku-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M22 42 L78 42 Q80 42 80 44 L80 78 Q80 82 76 82 L24 82 Q20 82 20 78 L20 44 Q20 42 22 42 Z" fill="#8b6f47" opacity="0.92"/><path d="M32 42 Q32 28 50 28 Q68 28 68 42" fill="none" stroke="#8b6f47" stroke-width="2.5" opacity="0.92"/></svg>
     </div>
     <div class="sku-meta">
       <div class="sku-name">1500 牛皮款 <span class="sku-tag tag-p4">P4 高客单</span></div>
@@ -755,6 +810,12 @@ code,td code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:"S
       <div class="sku-note">⚠ 牛皮款 logo 难避，侧面+虚化</div>
     </div>
   </div>
+</div>
+
+<!-- 上传提示 -->
+<div class="sku-upload-hint">
+  📌 <strong>真实图替换指引</strong>：把 5 张产品图（建议 1:1 正方形 · 600×600px 以上 · 纯色背景最佳）放到 <code>longchamp/assets/products/</code> 目录下，文件名依次为：
+  <code>short-mid.jpg</code> · <code>short-small.jpg</code> · <code>mini-1500.jpg</code> · <code>backpack.jpg</code> · <code>leather-1500.jpg</code>。上传后页面无需刷新 HTML，缩略图自动替换占位 SVG。
 </div>
 
 </div>
